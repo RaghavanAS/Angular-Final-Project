@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FlightApp</a>
+
+      <button class="btn btn-primary btn-margin" routerLink="/">
+        Home
+      </button>
+
+      <button id="qsLoginBtn" class="btn btn-primary btn-margin" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+        Log In
+      </button>
+
+      <button id="qsLogoutBtn" class="btn btn-primary btn-margin" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+        Log Out
+      </button>
+
+    </div>
+  </div>
+</nav>
+-->
+<app-navigation></app-navigation>
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+

@@ -1,0 +1,37 @@
+<!-- Navigation component with the following links
+1. Login (if not logged in)
+2. Home
+3. Add Flights(if logged in)
+4. Flight Status (if logged in)
+5. Log out (if logged in)
+-->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FlightApp</a>
+    </div>
+    <ul class="nav navbar-nav">
+
+      <li class="active" *ngIf="!auth.isAuthenticated()" routerLinkActive="active">
+        <a (click)="auth.login()">LogIn</a>
+      </li>
+
+      <li class="active" *ngIf="auth.isAuthenticated()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/">Home</a>
+      </li>
+
+      <li class="active" *ngIf="auth.isAuthenticated()" routerLinkActive="active">
+        <a routerLink="/register">Add Flights</a>
+      </li>
+
+      <li class="active" *ngIf="auth.isAuthenticated()" routerLinkActive="active">
+        <a routerLink="/status">Flight Status </a>
+      </li>
+
+      <li class="active" *ngIf="auth.isAuthenticated()" routerLinkActive="active">
+        <a (click)="auth.logout()">LogOut</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

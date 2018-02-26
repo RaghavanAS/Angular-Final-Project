@@ -1,0 +1,70 @@
+{
+  "FlightList": [
+    {
+      "fullName": "Trip to Australia",
+      "from": {
+        "city": "New York"
+      },
+      "to": {
+        "city": "Melbourne"
+      },
+      "type": "Return",
+      "departure": "2018-02-27",
+      "arrival": "2018-02-28",
+      "time": "22:10",
+      "Airlines": {
+        "Airlines": "Virgin Australia"
+      },
+      "id": 1
+    }
+  ],
+  "CityList": [
+    {
+      "city": "New York"
+    },
+    {
+      "city": "Mumbai"
+    },
+    {
+      "city": "Melbourne"
+    },
+    {
+      "city": "Vienna"
+    },
+    {
+      "city": "Vancouver"
+    },
+    {
+      "city": "Toronto"
+    },
+    {
+      "city": "Calgary"
+    },
+    {
+      "city": "Adelaide"
+    },
+    {
+      "city": "Perth"
+    }
+  ],
+  "AirlinesList": [
+    {
+      "Airlines": "Indigo"
+    },
+    {
+      "Airlines": "Air Asia"
+    },
+    {
+      "Airlines": "Singapore Airlines"
+    },
+    {
+      "Airlines": "Virgin Australia"
+    },
+    {
+      "Airlines": "Virgin Atlantic"
+    },
+    {
+      "Airlines": "Etihad Airways"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+<!-- Reactive form to store the flight schedule details -->
+<!-- form contains
+
+  1. Name of thr trip
+  2. From Location
+  3. To Location
+  4. Trip Type
+  5. Departure
+  6. Arrival
+  7. Time
+  8. Airlines
+  
+  Validations:
+
+  1. FullName validation
+  2. From and To location validation
+  3. Departure and Arrival Time validation
+
+  Buttons
+
+  1. Submit
+  2. Reset
+-->
+<form [formGroup]="form" (ngSubmit)="handleSubmit(form.value)">
+  <div class="form-group">
+    <label for="fullName">Trip Name</label>
+    <input type="text" id="fullName" class="form-control" [(ngModel)]="flightModel.fullName" name="fullName" formControlName="fullName">
+    <div *ngIf="form.controls['fullName'].invalid && (form.controls['fullName'].dirty || form.controls['fullName'].touched)" class="text-danger">
+      <div *ngIf="form.controls['fullName'].errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="form.controls['fullName'].errors.pattern">
+        Only Alphabets allowed
+      </div>
+      <div *ngIf="form.controls['fullName'].errors.minlength">
+        Name must be at least 6 characters long.
+      </div>
+    </div> 
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label for="from">From</label>
+      <select type="text" id="from" class="form-control" formControlName="from" [(ngModel)]="flightModel.from" name="from">
+        <option *ngFor="let city of cityList" [ngValue]="city">{{city?.city}}</option>
+      </select>
+    </div>
+    
+    <div class="col-md-6">
+      <label for="to">To</label>
+      <select type="text" id="to" class="form-control" formControlName="to" [(ngModel)]="flightModel.to" name="to">
+        <option *ngFor="let city of cityList" [ngValue]="city">{{city?.city}}</option>
+      </select>
+      <div *ngIf="form.controls['to'].hasError('MatchFields')">
+         From and To Locations cannot be same </div>
+    </div>
+   
+  </div>
+  <div class="row" style="margin-top: 15px">
+    <div class="col-md-5">
+      <label for="" style="display: block">Trip Type</label>
+      <label class="radio-inline">
+        <input type="radio" name="type" formControlName="type" [(ngModel)]="flightModel.type" value="One Way"> One way
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="type" formControlName="type" [(ngModel)]="flightModel.type" value="Return"> Return
+      </label>
+    </div>
+    <div class="col-md-4">
+      <label for="departure">Departure</label>
+      <input type="date" id="departure" class="form-control" formControlName="departure" [(ngModel)]="flightModel.departure" name="departure">
+    </div>
+    
+    <div class="col-md-3">
+      <label for="arrival">Arrival</label>
+      <input type="date" id="arrival" class="form-control" formControlName="arrival" [(ngModel)]="flightModel.arrival" name="arrival">
+      <div *ngIf="form.controls['arrival'].hasError('checkArrDate')"> 
+        Arrival Date less than Departure Date </div>
+    </div>
+    
+   </div>
+  <div class="row">
+    <div class="col-md-3">
+      <label for="time">Time</label>
+      <input type="time" id="time" class="form-control" formControlName="time" [(ngModel)]="flightModel.time" name="time">
+    </div>
+    <div class="col-md-9">
+      <label for="Airlines">Airlines</label>
+      <select type="text" id="Airlines" class="form-control" formControlName="Airlines" [(ngModel)]="flightModel.Airlines" name="Airlines">
+        <option *ngFor="let airline of airlineList" [ngValue]="airline">{{airline?.Airlines}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group" style="margin-top: 15px">
+    <button class="btn btn-primary btn-block" [disabled]="form.invalid">
+      Submit
+    </button>
+  </div>
+
+  <div class="form-group" style="margin-top: 15px">
+  <button class="btn btn-primary btn-block" (click)="reset()">Reset </button>
+  </div>
+</form>
+<div class="alert alert-success" *ngIf="showMessage">
+  Flight details saved successfully!
+</div>

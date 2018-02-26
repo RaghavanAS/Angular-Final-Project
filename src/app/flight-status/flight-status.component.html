@@ -1,0 +1,45 @@
+<div class="container">
+<input type="text" name="search" class="form-control" placeholder="Search By Airlines" [(ngModel)]="searchData">
+</div>
+<div class="container" *ngFor="let flight of (FlightList | searchBy : 'Airlines' : searchData)">
+  <div class="row">
+    <!--
+      Table to display the flight schedule details
+    -->
+    <div class="col-xs-12">
+    <div class="table-responsive">
+        <table summary="Summary of Flight Status" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th><img [src]="flightPath" class="flightPath"></th>
+              <th>Trip Name</th>
+              <th>Airlines</th>
+              <th>From</th>
+              <th><img [src]="departureIcon">Departure</th>
+              <th>To</th>
+              <th><img [src]="arrivalIcon">Arrival</th>
+              <th><img [src]="timeIcon" class="timeIcon">&emsp; TIme</th>
+              <th>Trip Type</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr>
+                <td>{{flight.id}}</td>
+                <td>{{flight.fullName}}</td>
+                <td>{{flight?.Airlines.Airlines}}</td>
+                <td>{{flight?.from.city}}</td>
+                <td>{{flight?.departure}}</td>
+                <td>{{flight?.to.city}}</td>
+                <td>{{flight?.arrival}}</td>
+                <td>{{flight?.time}}</td>
+                <td>{{flight?.type}}</td>
+                <td style = "color : red">{{flight?.status}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+        </div>
+      </div>
+    </div>
+</div>
